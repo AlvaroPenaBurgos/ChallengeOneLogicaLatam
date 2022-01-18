@@ -1,0 +1,88 @@
+<meta charset="UTF-8">
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="css.css">
+
+</head>
+
+<body>
+
+    <br>
+    <h1>Código secreto</h1>
+    <br>
+    <div style="margin: auto; margin-top: 50px; width: 960px; height: 500px; background-color:aliceblue">
+        <div style="float: left;">
+            <span class="label success">Texto Original</span>
+            <br>
+            <textarea id="txt1" rows="10" cols="50"></textarea>
+            <br>
+            <br>
+            <a href="#" class="button1" onclick="encriptar()">Codificar </a>
+            <a href="#" class="button2" onclick="RestablecerTexto()">Restablecer texto</a>
+        </div>
+
+        <div style="width: 400; float: right; ">
+            <span class="label success">Texto codificado</span>
+            <br>
+            <textarea id="txt2" rows="10" cols="50"></textarea>
+            <br>
+            <br>
+            <a href="#" class="button" onclick="ctrlZ()">Copiar</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Autor:De este sitio Web<br>
+            <a href="https://acortar.link/dq1xAb">Alvaro Peña Burgos</a>
+        </p>
+    </footer>
+
+</body>
+
+<script>
+    var textoTemporal = "";
+    function encriptar() {
+        textoTemporal = document.getElementById("txt1").value;
+        let txt = document.getElementById("txt1").value;
+        let leng = txt.length;
+
+        let txtNuevo = "";
+
+        for (var i = 0; i < leng; i++) {
+         
+            if (txt[i] == "e") {
+                txtNuevo = txtNuevo + "enter";
+            } else if (txt[i] == "i") {
+                txtNuevo = txtNuevo + "imes";
+            } else if (txt[i] == "a") {
+                txtNuevo = txtNuevo + "ai";
+            } else if (txt[i] == "o") {
+                txtNuevo = txtNuevo + "ober";
+            } else if (txt[i] == "u") {
+                txtNuevo = txtNuevo + "ufat";
+            }else {
+                txtNuevo = txtNuevo + txt[i];
+            }
+
+        }
+
+        document.getElementById("txt2").value = txtNuevo;
+    }
+
+    function ctrlZ() {
+        var copyText = document.getElementById("txt2");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); 
+
+        navigator.clipboard.writeText(copyText.value);
+
+        alert("Texto copiado: " + copyText.value);
+    }
+
+    function RestablecerTexto(){
+        document.getElementById("txt2").value = textoTemporal;
+    }
+    
+
+</script>
